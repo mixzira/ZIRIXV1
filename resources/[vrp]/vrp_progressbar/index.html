@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<style type="text/css">
+			#body {
+				display: none;
+				overflow: hidden;
+			}
+			#pbar_outerdiv {
+				background: rgba(0,0,0,0.3);
+				bottom: 5%;
+				left: 50%;
+				width: 15%;
+				height: 25px;
+				transform: translate(-50%,-50%);
+				position: fixed;
+				border-radius: 20px;
+				border: 1px solid rgba(0,0,0,0.2);
+			}
+			#pbar_innerdiv {
+				background-image: linear-gradient(to right, #4961FF, #6EE3FF);
+				height: 100%;
+				width: 0%;
+				border-radius: 20px;
+			}
+			#pbar_innertext {
+				top: 5px;
+				width: 100%;
+				height: 100%;
+				color: #fff;
+				font-size: 13px;
+				position: absolute;
+				text-align: center;
+				font-family: Arial,Helvetica,sans-serif;
+				text-shadow: 1px 1px rgba(0,0,0,0.5);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			$(function(){
+				window.onload = (e) => { 
+					window.addEventListener('message',(event) => {
+						var item = event.data;
+						if (item !== undefined && item.type === "ui") {		                
+							if (item.display === true) {
+								$("#body").show();
+								var start = new Date();
+								var maxTime = item.time;
+								var text = item.text;
+								var timeoutVal = Math.floor(maxTime/100);
+								animateUpdate();
+
+								$('#pbar_innertext').text(text);
+
+								function updateProgress(percentage) {
+									$('#pbar_innerdiv').css("width",percentage+"%");
+								}
+
+								function animateUpdate() {
+									var now = new Date();
+									var timeDiff = now.getTime() - start.getTime();
+									var perc = Math.round((timeDiff/maxTime)*100);
+									if (perc <= 100) {
+										updateProgress(perc);
+										setTimeout(animateUpdate, timeoutVal);
+									} else {
+										$("#body").hide();
+									}
+								}
+							} else {
+								$("#body").hide();
+							}
+						}
+					});
+				};
+			});
+		</script>
+		<div id="body">
+			<div id="pbar_outerdiv">
+				<div id="pbar_innerdiv"></div>
+				<div id="pbar_innertext"></div>
+			</div>
+		</div>
+	</body>
+</html>

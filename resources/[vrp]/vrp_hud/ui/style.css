@@ -1,0 +1,229 @@
+body{
+  position: relative;
+  z-index: -100;
+  overflow:hidden;
+  display: none;
+}
+
+@font-face {
+  font-family: 'Montserrat-Black';
+  src: url('fonts/Montserrat-Black.ttf');
+}
+
+/*hud*/
+.hud-player {
+  position: absolute;
+  background-size: contain !important;
+  transition-duration: 1s;
+  bottom: 15px;
+  right:10px;
+  z-index: 0;
+}
+
+#server{
+  position: absolute;
+  right: 20px;
+  top: 25px;
+}
+
+#velocimetro{
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  height: 35px;
+  right:250px;
+  bottom:13px;
+}
+
+.b1{
+  width: 231px;
+  height: 30px;
+  right:10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.items {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itemstwo{
+  height: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.heartDiv {
+  height: 12px;  
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+}
+
+.armorDiv {
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+}
+
+.thirstDiv{
+  background-size: contain;
+  background-position: center;
+  width: 100%; 
+  margin-left: 6px;
+}
+
+.hungerDiv{
+  background-size: contain;
+  background-position: center;
+  width: 100%; 
+}
+
+.bar {
+  width: 200px;
+  height: 3px;
+  border-radius: 50px;
+}
+
+.life {
+  background: rgba(0,0,0,0.35);
+  height: 5px;
+  margin-top: 3px;
+  border: 2px solid rgba(0, 0, 0, 0.03);
+}
+
+.life span {
+  height: 100%;
+  border-radius: 50px;
+  display: block;
+  background-image: linear-gradient(to right, #1f721d, #baee1b);
+}
+
+.armor {
+  width: 200px;
+  height: 3px;
+  background: rgba(0,0,0,0.35);
+  margin-top: 4px;
+  border: 2px solid rgba(0, 0, 0, 0.03);
+}
+
+.armor span {
+  height: 100%;
+  border-radius: 50px;
+  display: block;
+  background-image: linear-gradient(to right, #D6D6D6, #9C9C9C); 
+}
+
+.hunger{
+  width: 94px;
+  background: rgba(0,0,0,0.35);
+  border: 2px solid rgba(0, 0, 0, 0.03);
+}
+
+.hunger span {
+  height: 100%;
+  border-radius: 50px;
+  display: block;
+  background-image: linear-gradient(to right, #d7a623, #f8db66);
+}
+
+.thirst{
+  width: 94px;
+  background: rgba(0,0,0,0.35);
+  border: 2px solid rgba(0, 0, 0, 0.03);
+}
+
+.thirst span {
+  height: 100%;
+  border-radius: 50px;
+  display: block;
+  background-image: linear-gradient(to right, #6EE3FF, #4961FF);
+}
+
+#kmph{
+  position: relative;
+  background: rgba(0, 0, 0, 0.45);
+  width: 80px;
+  height: 35px;
+  color:white;
+  text-align: center;
+  border-radius: 40px;
+  margin-left: 8px;
+  z-index: 999;
+  font-family: 'Montserrat-Black';
+
+}
+
+.velocidade{
+  position: relative;
+  top: 5px;
+  height: 35px;
+  width: 80px;
+  font-size: 20px;
+}
+
+.cinto{
+  background: rgba(0, 0, 0, 0.45);
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.cinto-iconred{
+  position: relative;
+  width: 100%;
+  transform: translate(-50%);  
+  background: url(img/cinto0.png) no-repeat;
+  background-size: cover;
+  margin-top: 5px;
+  margin-left: 13px;
+  width: 25px;
+  height: 25px;
+  -webkit-animation: fadeLoop 1s step-start infinite !important;
+  animation: fadeLoop 1s step-start infinite !important; 
+}
+
+.cinto-icongreen{
+  position: relative;
+  width: 100%;
+  transform: translate(-50%);  
+  background: url(img/cinto2.png) no-repeat;
+  background-size: cover;
+  margin-top: 5px;
+  margin-left: 13px;
+  width: 25px;
+  height: 25px;
+}
+
+#gas{
+  position: relative;
+  background: rgba(0, 0, 0, 0.45);
+  height: 25px;
+  width: 25px;
+  transform: rotate(180deg);
+}
+
+.gasDiv{
+  position:relative;
+  background: rgba(0, 0, 0, 0.45);
+  background-size: cover;
+  /*background: url(img/gasolina0.png) no-repeat;*/
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
+  margin-left: 25px;
+  transform: translate(-50%);
+}
+
+.gasReserva{
+  -webkit-animation: fadeLoop 1s step-start infinite !important;
+  animation: fadeLoop 1s step-start infinite !important;
+}

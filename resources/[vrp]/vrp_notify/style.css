@@ -1,0 +1,69 @@
+html {
+	overflow-x: hidden !important;
+	overflow-y: hidden !important;
+	background-color: transparent !important;
+}
+
+body {
+	max-height: 100vh;
+	background-color: transparent !important;
+}
+
+#notifications {
+	top: 40%;
+	left: 0.3%;
+	color: rgba(255,255,255,0.9);
+	max-width: 600px;
+	max-height: 100vh;
+	font-size: 12px;
+	position: absolute !important;
+	font-family: Arial,Helvetica,sans-serif;
+	align-content: center;
+	display: flex;
+	flex-flow: column;
+	align-items: flex-start;
+}
+
+#notifications b {
+	color: rgba(255,255,255,1);	
+}
+
+#sucesso {
+	background-image: linear-gradient(to right,rgba(0,0,0,.65), rgba(0,0,0,.05));
+	background-repeat: no-repeat;
+	border-left: 3px solid rgba(69,187,0,0.8); 
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+
+#negado {
+	background-image: linear-gradient(to right,rgba(0,0,0,.65), rgba(0,0,0,.05));
+	background-repeat: no-repeat;
+	border-left: 3px solid rgba(200,50,50,0.8);
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+
+#aviso {
+	background-image: linear-gradient(to right,rgba(0,0,0,.65), rgba(0,0,0,.05));
+	background-repeat: no-repeat;
+	border-left: 3px solid rgba(205,164,0,0.8);
+	border-top-left-radius: 2px;
+}
+
+#importante {
+	background-image: linear-gradient(to right,rgba(0,0,0,.65), rgba(0,0,0,.05));
+	background-repeat: no-repeat;
+	border-left: 3px solid rgba(0,121,205,0.8);
+	border-bottom-left-radius: 2px; 
+}
+
+span {
+	height: 100%;
+	max-width: 600px;
+	padding: 13px;
+	padding-right: 55px;
+	float: right;
+	word-wrap: break-word;
+}
+

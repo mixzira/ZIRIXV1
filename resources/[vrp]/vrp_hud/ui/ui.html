@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="style.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script src="script.js" type="text/javascript"></script>
+    <script src="debounce.min.js" type="text/javascript"></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+	</head>
+	<body>
+    <div id="hud">
+
+      <div id="server"><img src="https://i.imgur.com/d1FpGK9.png"></div>
+
+      <div id="velocimetro">
+        <div class="gasDiv"></div>
+        <div id="kmph"></div>
+
+        <div class="cinto">
+          <div class="cinto-iconred"></div>
+          <div class="cinto-icongreen"></div>
+        </div>
+      </div>
+  		
+      <div class="hud-player">
+          <div class="b1">
+            <div class="items">
+              <div class="itemstwo">
+                <div class="hungerDiv"><div class="bar hunger"><span id="hunger"></span></div></div>
+                <div class="thirstDiv"><div class="bar thirst"><span id="thirst"></span></div></div>
+              </div>
+              <div class="heartDiv"><div class="bar life" ><span id="heal"></span></div></div>
+              <div class="armorDiv"><div class="bar armor"><span id="armor"></span></div></div>
+            </div>
+          </div>
+  		</div>
+    </div>  
+	</body>
+</html>
