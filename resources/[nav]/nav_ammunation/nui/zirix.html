@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ammunation Zirix</title>
+        <link rel="stylesheet" type="text/css" href="zirix.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700,900&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="actionmenu" style="display: none;">
+            <div class="conteudo">
+                <div class="menu">
+                    <div class="titleMenu">
+                        <p><b>Ammunation</b></p>
+                    </div>
+                    <div class="categorias">
+                        <section class="sessaoCategorias">
+                            <div class="secCat">
+                                <div class="catSessao item-category category_item" category="armas-brancas">
+                                    <p><b>Armas brancas</b></p>
+                                </div>                         
+                                <div class="catSessao item-category category_item" category="armas-fogo">
+                                    <p><b>Armas de fogo</b></p>
+                                </div>
+                               <div class="catSessao item-category category_item" category="outros">
+                                    <p><b>Outros</b></p>
+                                </div>                                                                                                                                   
+                            </div>
+                        </section>     
+                    </div>
+                </div>
+
+                <div class="itens">
+                    <section class="sessaoItens">
+                        <div class="conteudoSessao">
+
+                            <div class="itemSessao item-item" category="armas-fogo">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/glock.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Glock</b> - $1700</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-glock" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-fogo">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/m-glock.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Munição Glock</b> - $100</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-mglock" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            
+                            <div class="itemSessao item-item" category="outros">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/sinalizador.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Sinalizador</b> - $120</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-flare" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="outros">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/paraquedas.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Paraquedas</b> - $300</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-paraquedas" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/faca.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Faca</b> - $60</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-faca" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/canivete.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Canivete</b> - $130</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-canivete" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/batalha.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Machado de batalha</b> - $100</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-machado" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/lanterna.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Lanterna</b> - $10</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-lanterna" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/adaga.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Adaga</b> - $140</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-adaga" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/ingles.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Soco Ingles</b> - $300</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-socoingles" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/machete.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Machete</b> - $100</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-machete" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/grifo.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Chave de Grifo</b> - $150</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-grifo" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+        
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/martelo.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Martelo</b> - $30</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-martelo" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/golf.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Taco de Golf</b> - $80</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-golf" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/cabra.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Pe de cabra</b> - $200</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-crbar" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>  
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/machado.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Macahdo</b> - $90</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-dmachado" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>    
+                            
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/beisebol.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Taco de beiseboll</b> - $60</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-taco" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>   
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/garrafa.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Garrafa de vidro</b> - $40</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-garrafa" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>   
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/sinuca.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Taco de sinuca</b> - $70</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-sinuca" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>   
+
+                            <div class="itemSessao item-item" category="armas-brancas">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imags/pedra.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Machado de pedra</b> - $30</p>
+                                    </div>
+                                </div>
+                                <div class="pagamento">
+                                    <button data-action="c-pedra" class="menuoption">COMPRAR</button>
+                                </div>
+                            </div>  
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+        </div>
+        <script src="zirix.js" type="text/javascript"></script>
+    </body>
+</html>
