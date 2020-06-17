@@ -1,25 +1,23 @@
-fx_version 'bodacious'
+fx_version 'adamant'
 game 'gta5'
 
-ui_page 'html/ui.html'
+ui_page 'nui/darkside.html'
 
 client_scripts {
 	'@vrp/lib/utils.lua',
-	'client.lua'
+	'hansolo/*.lua'
 }
 
 server_scripts {
 	'@vrp/lib/utils.lua',
-	'server.lua'
+	'skywalker.lua'
 }
 
 files {
-	'html/ui.html',
-	'html/taximeter.ttf',
-	'html/cursor.png',
-	'html/styles.css',
-	'html/scripts.js',
-	'html/debounce.min.js'
+	'nui/*.html',
+	'nui/*.css',
+	'nui/*js',
+	'nui/**/*'
 }
 
 
