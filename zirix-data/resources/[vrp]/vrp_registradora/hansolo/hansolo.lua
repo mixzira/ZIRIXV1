@@ -1,3 +1,6 @@
+----------------------------------------------------------------------------------------------------------
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+----------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 roB = Tunnel.getInterface("vrp_registradora")
@@ -91,7 +94,7 @@ local locais = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		local ped = PlayerPedId()
 		local x,y,z = table.unpack(GetEntityCoords(ped))
 
@@ -101,17 +104,19 @@ Citizen.CreateThread(function()
 				local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 				local registradora = locais[k]
 
-				if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), registradora.x, registradora.y, registradora.z, true ) <= 1 and not emprocesso then
+				if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), registradora.x, registradora.y, registradora.z, true ) < 1.2 and not emprocesso then
 					DrawText3D(registradora.x, registradora.y, registradora.z, "~w~[~r~E~w~] Para iniciar o ~r~ROUBO")
 				end
 
-				if Vdist(v.x,v.y,v.z,x,y,z) <= 1 and not andamento then
+				if Vdist(v.x,v.y,v.z,x,y,z) < 1.2 and not andamento then
+					idle = 5
 					if IsControlJustPressed(0,38) then
 						roB.checkRobbery(v.id,v.x,v.y,v.z,v.h)
 					end
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
