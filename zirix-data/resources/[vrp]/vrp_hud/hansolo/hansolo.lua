@@ -28,7 +28,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-    Citizen.Wait(1000)
+    local idle = 1000
 		health = (GetEntityHealth(PlayerPedId())-100)/300*100
     armor = GetPedArmour(PlayerPedId())
 
@@ -39,18 +39,21 @@ Citizen.CreateThread(function()
       speed = math.ceil(GetEntitySpeed(PedCar)*3.605936)
       inCar  = true
       gasolina = GetVehicleFuelLevel(PedCar)
-
+      idle = 100
+      
       if menu_celular then
 			  DisplayRadar(false)
       else
         DisplayRadar(true)
       end
+
     else
       
 			DisplayRadar(false)
 			inCar  = false
 			PedCar = nil
       speed = nil
+
     end
     
 		SendNUIMessage({
@@ -65,7 +68,8 @@ Citizen.CreateThread(function()
       cinto = CintoSeguranca,
 		 	display = displayValue
     });
-    
+
+    Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

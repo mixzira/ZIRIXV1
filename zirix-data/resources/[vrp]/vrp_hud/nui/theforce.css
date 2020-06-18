@@ -185,7 +185,7 @@ body{
   position: relative;
   width: 100%;
   transform: translate(-50%);  
-  background: url(img/cinto0.png) no-repeat;
+  background: url(imagens/cinto0.png) no-repeat;
   background-size: cover;
   margin-top: 5px;
   margin-left: 13px;
@@ -199,7 +199,7 @@ body{
   position: relative;
   width: 100%;
   transform: translate(-50%);  
-  background: url(img/cinto2.png) no-repeat;
+  background: url(imagens/cinto2.png) no-repeat;
   background-size: cover;
   margin-top: 5px;
   margin-left: 13px;
