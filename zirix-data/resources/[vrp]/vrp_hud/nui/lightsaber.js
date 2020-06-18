@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+--------------------------------------------------------------------------------------------------------*/
 $(document).ready(function(){
   var $debug = $("#debug");
   var $heal = $("#heal");
@@ -13,14 +17,14 @@ $(document).ready(function(){
       $('#hud').fadeOut();
     }
     if ( event.data.incar == true ) {
-      $('.hud-player').css('background','url(img/barra_Esquerda.png) no-repeat');
+      $('.hud-player').css('background','url(imagens/barra_Esquerda.png) no-repeat');
       $('.hud-player').css('width','220px');
       $('.hud-player').css('right','2%');
       $("#velocimetro").fadeIn(1500);
     }   
     else {
       
-      $('.hud-player').css('background','url(img/barra_Esquerda.png) no-repeat');
+      $('.hud-player').css('background','url(imagens/barra_Esquerda.png) no-repeat');
       $('.hud-player').css('width','220px');
       $('.hud-player').css('right','43.8%');
       $("#velocimetro").fadeOut(10);
@@ -44,12 +48,12 @@ $(document).ready(function(){
     $("#thirst").css("width", 100 - data.thirst + "%");
 
     if ( event.data.gas > 20 ) {
-      $('.gasDiv').css('background-image','url(img/gasolina0.png)');
+      $('.gasDiv').css('background-image','url(imagens/gasolina0.png)');
       $('.gasDiv').removeClass('gasReserva');
       $('#gas').removeClass('gasReserva');
     }   
     else {
-      $('.gasDiv').css('background-image','url(img/gasolina.png)');
+      $('.gasDiv').css('background-image','url(imagens/gasolina.png)');
       $('.gasDiv').addClass('gasReserva');
       $('#gas').addClass('gasReserva');
     }    

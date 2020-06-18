@@ -27,38 +27,30 @@ AddEventHandler("vrp_hud:update", function(rHunger, rThirst)
 end)
 
 Citizen.CreateThread(function()
-  local seatbeltIsOn = false
-
 	while true do
-    Citizen.Wait(1)
-    
-    local source = source
-    local user_id = vRP.getUserId(source)
-    
-		ped = PlayerPedId()
-		health = (GetEntityHealth(ped)-100)/300*100
-    armor = GetPedArmour(ped)
+    Citizen.Wait(1000)
+		health = (GetEntityHealth(PlayerPedId())-100)/300*100
+    armor = GetPedArmour(PlayerPedId())
 
-    local x,y,z = table.unpack(GetEntityCoords(ped,false))
+    local x,y,z = table.unpack(GetEntityCoords(PlayerPedId(),false))
 
-		if IsPedInAnyVehicle(ped) then
-      PedCar = GetVehiclePedIsIn(ped)
+		if IsPedInAnyVehicle(PlayerPedId()) then
+      PedCar = GetVehiclePedIsIn(PlayerPedId())
       speed = math.ceil(GetEntitySpeed(PedCar)*3.605936)
+      inCar  = true
+      gasolina = GetVehicleFuelLevel(PedCar)
 
       if menu_celular then
 			  DisplayRadar(false)
       else
         DisplayRadar(true)
       end
-
-			inCar  = true
-			PedCar = GetVehiclePedIsIn(ped)
-      gasolina = GetVehicleFuelLevel(PedCar)
-		else	
+    else
+      
 			DisplayRadar(false)
 			inCar  = false
-			PedCar = 0
-      speed = 0
+			PedCar = nil
+      speed = nil
     end
     
 		SendNUIMessage({
