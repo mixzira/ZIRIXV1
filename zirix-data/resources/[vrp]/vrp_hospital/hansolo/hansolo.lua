@@ -9,6 +9,10 @@ vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 Resg = Tunnel.getInterface("vrp_hospital")
 -----------------------------------------------------------------------------------------------------------------------------------------
+--[ VARIÁVEIS ]----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 --[ REANIMAR ]---------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('reanimar')
@@ -45,31 +49,29 @@ end)
 --[ MACAS DO HOSPITAL ]------------------------------------------------------------------------------------------------------------------ 
 -----------------------------------------------------------------------------------------------------------------------------------------
 local macas = {
-	{ ['x'] = 348.28, ['y'] = -581.52, ['z'] = 43.29, ['x2'] = 349.01, ['y2'] = -582.0, ['z2'] = 44.21, ['h'] = 160.8 },
-	{ ['x'] = 350.87, ['y'] = -582.4, ['z'] = 43.29, ['x2'] = 351.54, ['y2'] = -583.08, ['z2'] = 44.21, ['h'] = 160.8 },
-	{ ['x'] = 353.48, ['y'] = -583.39, ['z'] = 43.29, ['x2'] = 354.17, ['y2'] = -583.98, ['z2'] = 44.21, ['h'] = 160.8 },
-	{ ['x'] = 355.75, ['y'] = -584.53, ['z'] = 43.29, ['x2'] = 356.53, ['y2'] = -584.95, ['z2'] = 44.21, ['h'] = 160.8 },
-	{ ['x'] = 366.36, ['y'] = -581.34, ['z'] = 43.29, ['x2'] = 367.25, ['y2'] = -581.65, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 361.88, ['y'] = -579.73, ['z'] = 43.29, ['x2'] = 361.02, ['y2'] = -579.42, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 358.11, ['y'] = -579.19, ['z'] = 43.29, ['x2'] = 359.03, ['y2'] = -579.35, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 355.87, ['y'] = -578.31, ['z'] = 43.29, ['x2'] = 356.75, ['y2'] = -578.47, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 353.41, ['y'] = -577.4, ['z'] = 43.29, ['x2'] = 354.44, ['y2'] = -577.44, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 350.87, ['y'] = -576.4, ['z'] = 43.29, ['x2'] = 351.88, ['y2'] = -576.68, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 330.41, ['y'] = -568.99, ['z'] = 43.29, ['x2'] = 331.44, ['y2'] = -569.2, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 327.48, ['y'] = -568.06, ['z'] = 43.29, ['x2'] = 328.44, ['y2'] = -568.27, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 324.71, ['y'] = -566.75, ['z'] = 43.29, ['x2'] = 325.48, ['y2'] = -567.06, ['z2'] = 44.21, ['h'] = 334.32 },
-	{ ['x'] = 328.36, ['y'] = -575.05, ['z'] = 43.29, ['x2'] = 329.26, ['y2'] = -575.36, ['z2'] = 44.21, ['h'] = 160.8 },
-	{ ['x'] = 325.3, ['y'] = -573.82, ['z'] = 43.29, ['x2'] = 326.17, ['y2'] = -574.14, ['z2'] = 44.21, ['h'] = 160.8 },
-	{ ['x'] = 322.2, ['y'] = -572.83, ['z'] = 43.29, ['x2'] = 322.98, ['y2'] = -573.1, ['z2'] = 44.21, ['h'] = 160.8 },
-}
+	{ ['x'] = 348.28, ['y'] = -581.52, ['z'] = 43.29, ['x2'] = 349.01, ['y2'] = -582.0, ['z2'] = 44.21, ['h'] = 160.8, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 350.87, ['y'] = -582.4, ['z'] = 43.29, ['x2'] = 351.54, ['y2'] = -583.08, ['z2'] = 44.21, ['h'] = 160.8, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 353.48, ['y'] = -583.39, ['z'] = 43.29, ['x2'] = 354.17, ['y2'] = -583.98, ['z2'] = 44.21, ['h'] = 160.8, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 355.75, ['y'] = -584.53, ['z'] = 43.29, ['x2'] = 356.53, ['y2'] = -584.95, ['z2'] = 44.21, ['h'] = 160.8, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 366.36, ['y'] = -581.34, ['z'] = 43.29, ['x2'] = 367.25, ['y2'] = -581.65, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 361.88, ['y'] = -579.73, ['z'] = 43.29, ['x2'] = 361.02, ['y2'] = -579.42, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 358.11, ['y'] = -579.19, ['z'] = 43.29, ['x2'] = 359.03, ['y2'] = -579.35, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 355.87, ['y'] = -578.31, ['z'] = 43.29, ['x2'] = 356.75, ['y2'] = -578.47, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 353.41, ['y'] = -577.4, ['z'] = 43.29, ['x2'] = 354.44, ['y2'] = -577.44, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 350.87, ['y'] = -576.4, ['z'] = 43.29, ['x2'] = 351.88, ['y2'] = -576.68, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 330.41, ['y'] = -568.99, ['z'] = 43.29, ['x2'] = 331.44, ['y2'] = -569.2, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 327.48, ['y'] = -568.06, ['z'] = 43.29, ['x2'] = 328.44, ['y2'] = -568.27, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 324.71, ['y'] = -566.75, ['z'] = 43.29, ['x2'] = 325.48, ['y2'] = -567.06, ['z2'] = 44.21, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 328.36, ['y'] = -575.05, ['z'] = 43.29, ['x2'] = 329.26, ['y2'] = -575.36, ['z2'] = 44.21, ['h'] = 160.8, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 325.3, ['y'] = -573.82, ['z'] = 43.29, ['x2'] = 326.17, ['y2'] = -574.14, ['z2'] = 44.21, ['h'] = 160.8, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
+	{ ['x'] = 322.2, ['y'] = -572.83, ['z'] = 43.29, ['x2'] = 322.98, ['y2'] = -573.1, ['z2'] = 44.21, ['h'] = 160.8, ['texto'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~   [~y~G~w~] para iniciar tratamento." },
 
-local macas2 = { 
-	{ ['x'] = 309.26, ['y'] = -573.12, ['z'] = 43.31, ['x2'] = 308.68, ['y2'] = -573.4, ['z2'] = 44.26, ['h'] = 26.74 },
-	{ ['x'] = 311.17, ['y'] = -562.23, ['z'] = 43.31, ['x2'] = 310.6, ['y2'] = -562.49, ['z2'] = 44.26, ['h'] = 25.4 },
-	{ ['x'] = 314.74, ['y'] = -564.04, ['z'] = 43.31, ['x2'] = 315.32, ['y2'] = -564.25, ['z2'] = 44.26, ['h'] = 334.32 },
-	{ ['x'] = 320.96, ['y'] = -566.2, ['z'] = 43.31, ['x2'] = 320.47, ['y2'] = -565.94, ['z2'] = 44.26, ['h'] = 334.32 },
-	{ ['x'] = 306.2, ['y'] = -579.71, ['z'] = 48.25, ['x2'] = 305.47, ['y2'] = -579.53, ['z2'] = 49.02, ['h'] = 160.05 },
-	{ ['x'] = 308.95, ['y'] = -571.1, ['z'] = 48.28, ['x2'] = 308.76, ['y2'] = -571.66, ['z2'] = 49.22, ['h'] = 74.15 },
+	{ ['x'] = 309.26, ['y'] = -573.12, ['z'] = 43.31, ['x2'] = 308.68, ['y2'] = -573.4, ['z2'] = 44.26, ['h'] = 26.74, ['texto'] = "Pressione [~y~E~w~] para deitar." },
+	{ ['x'] = 311.17, ['y'] = -562.23, ['z'] = 43.31, ['x2'] = 310.6, ['y2'] = -562.49, ['z2'] = 44.26, ['h'] = 25.4, ['texto'] = "Pressione [~y~E~w~] para deitar." },
+	{ ['x'] = 314.74, ['y'] = -564.04, ['z'] = 43.31, ['x2'] = 315.32, ['y2'] = -564.25, ['z2'] = 44.26, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar." },
+	{ ['x'] = 320.96, ['y'] = -566.2, ['z'] = 43.31, ['x2'] = 320.47, ['y2'] = -565.94, ['z2'] = 44.26, ['h'] = 334.32, ['texto'] = "Pressione [~y~E~w~] para deitar." },
+	{ ['x'] = 306.2, ['y'] = -579.71, ['z'] = 48.25, ['x2'] = 305.47, ['y2'] = -579.53, ['z2'] = 49.02, ['h'] = 160.05, ['texto'] = "Pressione [~y~E~w~] para deitar." },
+	{ ['x'] = 308.95, ['y'] = -571.1, ['z'] = 48.28, ['x2'] = 308.76, ['y2'] = -571.66, ['z2'] = 49.22, ['h'] = 74.15, ['texto'] = "Pressione [~y~E~w~] para deitar." }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 --[ USO ]-------------------------------------------------------------------------------------------------------------------------------- 
@@ -77,7 +79,7 @@ local macas2 = {
 local emMaca = false
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		for k,v in pairs(macas) do
 			local ped = PlayerPedId()
 			local x,y,z = table.unpack(GetEntityCoords(ped))
@@ -85,17 +87,22 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			local cod = macas[k]
 
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), cod.x, cod.y, cod.z, true ) <= 2 then
-				DrawText3D(cod.x, cod.y, cod.z, "[~g~E~w~] Para deitar       [~r~G~w~] Para iniciar tratamento")
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), cod.x, cod.y, cod.z, true ) < 1.2 then
+				
+				DrawText3D(cod.x, cod.y, cod.z, cod.texto)
 			end
 
-			if distance <= 1.1 then
+			if distance < 1.2 then
+
+				idle = 5
+
 				if IsControlJustPressed(0,38) then
 					SetEntityCoords(ped,v.x2,v.y2,v.z2)
 					SetEntityHeading(ped,v.h)
 					vRP._playAnim(false,{{"amb@world_human_sunbathe@female@back@idle_a","idle_a"}},true)
 					emMaca = true
 				end
+
 				if IsControlJustPressed(0,47) then
 					if Resg.checkServices() then
 						TriggerEvent('tratamento-macas')
@@ -108,6 +115,7 @@ Citizen.CreateThread(function()
 						TriggerEvent("Notify","aviso","Existem paramédicos em serviço.")
 					end
 				end
+
 			end
 
 			if IsControlJustPressed(0,167) and emMaca then
@@ -115,31 +123,8 @@ Citizen.CreateThread(function()
 				emMaca = false
 			end
 		end
-	end
-end)
 
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(5)
-		for k,v in pairs(macas2) do
-			local ped = PlayerPedId()
-			local x,y,z = table.unpack(GetEntityCoords(ped))
-			local bowz,cdz = GetGroundZFor_3dCoord(v.x,v.y,v.z)
-			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
-			local cod = macas2[k]
-
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), cod.x, cod.y, cod.z, true ) <= 2 then
-				DrawText3D(cod.x, cod.y, cod.z, "[~g~E~w~] Para deitar")
-			end
-
-			if distance <= 1.1 then
-				if IsControlJustPressed(0,38) then
-					SetEntityCoords(ped,v.x2,v.y2,v.z2)
-					SetEntityHeading(ped,v.h)
-					vRP._playAnim(false,{{"amb@world_human_sunbathe@female@back@idle_a","idle_a"}},true)
-				end
-			end
-		end
+		Citizen.Wait(idle)
 	end
 end)
 
