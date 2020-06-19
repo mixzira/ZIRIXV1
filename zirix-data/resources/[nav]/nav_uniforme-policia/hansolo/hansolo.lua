@@ -1,3 +1,7 @@
+----------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+----------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
@@ -56,7 +60,7 @@ local armarios = {
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 
 		for k,v in pairs(armarios) do
 			local ped = PlayerPedId()
@@ -65,12 +69,13 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			local armarios = armarios[k]
 
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), armarios.x, armarios.y, armarios.z, true ) <= 2 then
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), armarios.x, armarios.y, armarios.z, true ) < 1.2 then
 				DrawText3D(armarios.x, armarios.y, armarios.z, "[~g~E~w~] Para acessar o ~g~armário de uniformes~w~.")
 			end
 			
-			if distance <= 30 then
+			if distance <= 5 then
 				DrawMarker(23,armarios.x,armarios.y,armarios.z-0.97,0,0,0,0,0,0,1.0,1.0,0.5,20,20,20,240,0,0,0,0)
+				idle = 5
 				if distance <= 1.2 then
 					if IsControlJustPressed(0,38) and Policia.checkPermissao() then
 						ToggleActionMenu()
@@ -78,6 +83,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
