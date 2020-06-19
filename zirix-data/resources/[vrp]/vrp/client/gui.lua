@@ -175,7 +175,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1000)
+		Citizen.Wait(10)
 		local ped = PlayerPedId()
 
 		if menu_state.opened then
@@ -380,10 +380,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		local idle = 1000
+		Citizen.Wait(10)
 		local ped = PlayerPedId()
 		if apontar then
-			idle = 1
 			local camPitch = GetGameplayCamRelativePitch()
 			if camPitch < -70.0 then
 				camPitch = -70.0
@@ -413,7 +412,6 @@ Citizen.CreateThread(function()
 			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isBlocked",blocked)
 			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isFirstPerson",Citizen.InvokeNative(0xEE778F8C7E1142E2,Citizen.InvokeNative(0x19CAFA3C87F7C2FF))==4)
 		end
-		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -430,108 +428,6 @@ AddEventHandler("syncclean",function(index)
 				tvRP.DeletarObjeto()
 			end
 		end
-	end
-end)
------------------------------------------------------------------------------------------------------------------------------------------
--- HOLSTER
------------------------------------------------------------------------------------------------------------------------------------------
-Config = {}
-Config.WeaponList = {
-	--NORMAL
-	"WEAPON_SNSPISTOL",
-	"WEAPON_VINTAGEPISTOL",
-	"WEAPON_REVOLVER",
-	"WEAPON_MICROSMG",
-	"WEAPON_MUSKET",
-	"WEAPON_KNIFE",
-	"WEAPON_DAGGER",
-	"WEAPON_MACHETE",
-	"WEAPON_SWITCHBLADE",
-	"WEAPON_WRENCH",
-	"WEAPON_HAMMER",
-	"WEAPON_GOLFCLUB",
-	"WEAPON_CROWBAR",
-	"WEAPON_HATCHET",
-	"WEAPON_BAT",
-	"WEAPON_BOTTLE",
-	"WEAPON_BATTLEAXE",
-	"WEAPON_POOLCUE",
-	"WEAPON_STONE_HATCHET",
-
-	--MAFIA
-	"WEAPON_PISTOL_MK2",
-	"WEAPON_ASSAULTSMG",
-	"WEAPON_ASSAULTRIFLE",
-	"WEAPON_GUSENBERG",
-
-	--SERPENTES
-	"WEAPON_MACHINEPISTOL",
-	"WEAPON_COMPACTRIFLE",
-	"WEAPON_CARBINERIFLE_MK2",
-
-	--POLICE
-	"WEAPON_PISTOL",
-	"WEAPON_STUNGUN",
-	"WEAPON_COMBATPISTOL",
-	"WEAPON_REVOLVER_MK2",
-	"WEAPON_SMG",
-	"WEAPON_COMBATPDW",
-	"WEAPON_CARBINERIFLE",
-	"WEAPON_PUMPSHOTGUN_MK2"
-}
-
-local LastWeapon = nil
-local block = false
-Citizen.CreateThread(function()
-	while true do
-		local idle = 1000
-		local ped = PlayerPedId()
-		if DoesEntityExist(ped) and not IsEntityDead(ped) and not IsPedInAnyVehicle(ped) then
-			for i=1,#Config.WeaponList do
-				tvRP.CarregarAnim("reaction@intimidation@1h")
-				if not holstered and LastWeapon ~= nil and LastWeapon ~= GetHashKey(Config.WeaponList[i]) and GetSelectedPedWeapon(ped) == GetHashKey(Config.WeaponList[i]) then
-					idle = 5
-					block = true
-					SetCurrentPedWeapon(ped,-1569615261,true)
-					TaskPlayAnim(ped,"reaction@intimidation@1h","intro",8.0,8.0,-1,48,10,0,0,0)
-
-					Citizen.Wait(1200)
-					SetCurrentPedWeapon(ped,GetHashKey(Config.WeaponList[i]),true)
-					Citizen.Wait(1300)
-					ClearPedTasks(ped)
-					holstered = true
-					block = false
-				end
-
-				if holstered and LastWeapon ~= nil and LastWeapon == GetHashKey(Config.WeaponList[i]) and GetSelectedPedWeapon(ped) == -1569615261 then
-					idle = 5
-					block = true
-					SetCurrentPedWeapon(ped,GetHashKey(Config.WeaponList[i]),true)
-					TaskPlayAnim(ped,"reaction@intimidation@1h","outro",8.0,8.0,-1,48,10,0,0,0)
-
-					Citizen.Wait(1400)
-					SetCurrentPedWeapon(ped,-1569615261,true)
-					Citizen.Wait(600)
-					ClearPedTasks(ped)
-					holstered = false
-					block = false
-				end
-			end
-			LastWeapon = GetSelectedPedWeapon(ped)
-		end
-		Citizen.Wait(idle)
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		local idle = 1000
-		if block then
-			idle = 5
-			BlockWeaponWheelThisFrame()
-			DisableControlAction(0,25,true)
-		end
-		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
