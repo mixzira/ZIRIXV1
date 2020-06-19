@@ -28,8 +28,9 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if menu_celular then
+			idle = 5
 			BlockWeaponWheelThisFrame()
 			DisableControlAction(0,16,true)
 			DisableControlAction(0,17,true)
@@ -54,6 +55,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,289,true)
 			DisableControlAction(0,344,true)			
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -173,11 +175,13 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		Citizen.Wait(1000)
 		local ped = PlayerPedId()
+
 		if menu_state.opened then
 			DisableControlAction(0,75)
 		end
+
 		if IsControlJustPressed(0,172) then SendNUIMessage({ act = "event", event = "UP" }) if menu_state.opened then tvRP.playSound("NAV_UP_DOWN","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
 		if IsControlJustPressed(0,173) then SendNUIMessage({ act = "event", event = "DOWN" }) if menu_state.opened then tvRP.playSound("NAV_UP_DOWN","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
 		if IsControlJustPressed(0,174) then SendNUIMessage({ act = "event", event = "LEFT" }) if menu_state.opened then tvRP.playSound("NAV_LEFT_RIGHT","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
@@ -219,27 +223,6 @@ Citizen.CreateThread(function()
 				end
         	end
 		end
-
-		-- AJOELHAR (F5)
-		--[[if IsControlJustPressed(0,166) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				if IsEntityPlayingAnim(ped,"random@arrests@busted","idle_a",3) then
-					tvRP.DeletarObjeto()
-				else
-					tvRP.DeletarObjeto()
-					tvRP.CarregarAnim("random@arrests")
-					tvRP.CarregarAnim("random@arrests@busted")
-					TaskPlayAnim(ped,"random@arrests","idle_2_hands_up",8.0,1.0,-1,2,0,0,0,0)
-					Citizen.Wait(4000)
-					TaskPlayAnim(ped,"random@arrests","kneeling_arrest_idle",8.0,1.0,-1,2,0,0,0,0)
-					Citizen.Wait(500)
-					TaskPlayAnim(ped,"random@arrests@busted","enter",8.0,1.0,-1,2,0,0,0,0)
-					Citizen.Wait(1000)
-					TaskPlayAnim(ped,"random@arrests@busted","idle_a",8.0,1.0,-1,9,0,0,0,0)
-					Citizen.Wait(100)
-				end
-        	end
-		end]]
 
 		-- PUTO (F5)
 		if IsControlJustPressed(0,166) then
@@ -375,9 +358,10 @@ local anims = {
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		for _,block in pairs(anims) do
 			if IsEntityPlayingAnim(PlayerPedId(),block.dict,block.anim,3) or object then
+				idle = 5
 			    BlockWeaponWheelThisFrame()
 				DisableControlAction(0,16,true)
 				DisableControlAction(0,17,true)
@@ -388,6 +372,7 @@ Citizen.CreateThread(function()
 				DisableControlAction(0,257,true)
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -395,9 +380,10 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		local ped = PlayerPedId()
 		if apontar then
+			idle = 1
 			local camPitch = GetGameplayCamRelativePitch()
 			if camPitch < -70.0 then
 				camPitch = -70.0
@@ -427,6 +413,7 @@ Citizen.CreateThread(function()
 			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isBlocked",blocked)
 			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isFirstPerson",Citizen.InvokeNative(0xEE778F8C7E1142E2,Citizen.InvokeNative(0x19CAFA3C87F7C2FF))==4)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -497,12 +484,13 @@ local LastWeapon = nil
 local block = false
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		local ped = PlayerPedId()
 		if DoesEntityExist(ped) and not IsEntityDead(ped) and not IsPedInAnyVehicle(ped) then
 			for i=1,#Config.WeaponList do
 				tvRP.CarregarAnim("reaction@intimidation@1h")
 				if not holstered and LastWeapon ~= nil and LastWeapon ~= GetHashKey(Config.WeaponList[i]) and GetSelectedPedWeapon(ped) == GetHashKey(Config.WeaponList[i]) then
+					idle = 5
 					block = true
 					SetCurrentPedWeapon(ped,-1569615261,true)
 					TaskPlayAnim(ped,"reaction@intimidation@1h","intro",8.0,8.0,-1,48,10,0,0,0)
@@ -516,6 +504,7 @@ Citizen.CreateThread(function()
 				end
 
 				if holstered and LastWeapon ~= nil and LastWeapon == GetHashKey(Config.WeaponList[i]) and GetSelectedPedWeapon(ped) == -1569615261 then
+					idle = 5
 					block = true
 					SetCurrentPedWeapon(ped,GetHashKey(Config.WeaponList[i]),true)
 					TaskPlayAnim(ped,"reaction@intimidation@1h","outro",8.0,8.0,-1,48,10,0,0,0)
@@ -530,16 +519,19 @@ Citizen.CreateThread(function()
 			end
 			LastWeapon = GetSelectedPedWeapon(ped)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if block then
+			idle = 5
 			BlockWeaponWheelThisFrame()
 			DisableControlAction(0,25,true)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

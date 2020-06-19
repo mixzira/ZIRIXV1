@@ -32,7 +32,6 @@ client_scripts {
 	'client/player_state.lua',
 	'client/survival.lua',
 	'client/map.lua',
-	'client/notify.lua',
 	'client/identity.lua',
 	'client/police.lua'
 }

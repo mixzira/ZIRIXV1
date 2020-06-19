@@ -159,7 +159,7 @@ end)]]
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		Citizen.Wait(10)
 		--if standby <= 0 then
 			local px,py,pz = tvRP.getPosition()
 			for k,v in pairs(areas) do

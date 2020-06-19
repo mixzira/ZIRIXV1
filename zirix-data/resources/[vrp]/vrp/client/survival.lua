@@ -77,9 +77,10 @@ local deathtimer = 900
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		local ped = PlayerPedId()
 		if GetEntityHealth(ped) <= 101 and deathtimer >= 0 then
+			idle = 5
 			if not nocauteado then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				NetworkResurrectLocalPlayer(x,y,z,true,true,false)
@@ -146,6 +147,7 @@ Citizen.CreateThread(function()
 				DisableControlAction(0,344,true)
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

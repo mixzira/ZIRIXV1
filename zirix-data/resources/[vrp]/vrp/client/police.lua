@@ -14,8 +14,9 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if noclip then
+			idle = 5
 			local ped = PlayerPedId()
 			local x,y,z = tvRP.getPosition()
 			local dx,dy,dz = tvRP.getCamDirection()
@@ -41,6 +42,7 @@ Citizen.CreateThread(function()
 
 			SetEntityCoordsNoOffset(ped,x,y,z,true,true,true)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -164,8 +166,9 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if handcuffed or mala or capuz then
+			idle = 5
 			BlockWeaponWheelThisFrame()
 			DisableControlAction(0,20,true)
 			DisableControlAction(0,21,true)
@@ -214,6 +217,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,311,true)
 			DisableControlAction(0,344,true)	
 		end
+		Citizen.Wait(idle)
 	end
 end)
 

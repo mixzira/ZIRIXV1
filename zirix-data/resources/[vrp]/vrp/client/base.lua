@@ -197,10 +197,12 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if NetworkIsSessionStarted() then
+			idle = 5
 			TriggerServerEvent("Queue:playerActivated")
 			return
 		end
+		Citizen.Wait(idle)
 	end
 end)
