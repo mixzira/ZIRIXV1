@@ -1,16 +1,19 @@
+----------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+----------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 
 Perm = {}
-Tunnel.bindInterface("nav_ingre-coca-two",Perm)
+Tunnel.bindInterface("nav_ingre-coca",Perm)
 -----------------------------------------------------------------------------------------------------------------------------------------
 --[ ARRAY ]------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
 local valores = {
-	{ item = "acido-sulfurico", quantidade = 1, compra = 30 },
-	{ item = "calcio-po", quantidade = 1, compra = 30 },
-	{ item = "folhas-coca", quantidade = 1, compra = 30 },
+	{ item = "querosene", quantidade = 1, compra = 30 },
+	{ item = "pasta-baixa", quantidade = 1, compra = 30 },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 --[ COMPRAR ]----------------------------------------------------------------------------------------------------------------------------
