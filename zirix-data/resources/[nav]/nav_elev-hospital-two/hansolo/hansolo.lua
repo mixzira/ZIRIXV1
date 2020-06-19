@@ -1,6 +1,7 @@
------------------------------------------------------------------------------------------------------------------------------------------
--- FUNCTION
------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+----------------------------------------------------------------------------------------------------------
 local menuactive = false
 function ToggleActionMenu()
 	menuactive = not menuactive
@@ -58,7 +59,7 @@ local elevadores = {
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 
 		for k,v in pairs(elevadores) do
 			local ped = PlayerPedId()
@@ -67,12 +68,13 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			local elev = elevadores[k]
 
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), elev.x, elev.y, elev.z, true ) <= 2 then
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), elev.x, elev.y, elev.z, true ) < 1.2 then
 				DrawText3D(elev.x, elev.y, elev.z, "[~g~E~w~] Para acessar o elevador")
 			end
 			
-			if distance <= 30 then
+			if distance <= 5 then
 				DrawMarker(23,elev.x,elev.y,elev.z-0.97,0,0,0,0,0,0,1.0,1.0,0.5,20,20,20,240,0,0,0,0)
+				idle = 5
 				if distance <= 1.2 then
 					if IsControlJustPressed(0,38) then
 						ToggleActionMenu()
@@ -80,6 +82,8 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+
+		Citizen.Wait(idle)
 	end
 end)
 

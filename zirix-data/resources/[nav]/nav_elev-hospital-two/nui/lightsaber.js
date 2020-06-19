@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+--------------------------------------------------------------------------------------------------------*/
 $(function(){
 	init();
 
@@ -69,7 +73,7 @@ function init() {
 }
 
 function sendData(name,data){
-	$.post("http://nav_elev-hospital-one/"+name,JSON.stringify(data),function(datab){
+	$.post("http://nav_elev-hospital-two/"+name,JSON.stringify(data),function(datab){
 		if (datab != "ok"){
 			console.log(datab);
 		}
