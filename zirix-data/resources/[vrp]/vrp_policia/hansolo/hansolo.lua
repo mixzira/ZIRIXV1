@@ -44,9 +44,10 @@ AddEventHandler("carregar",function(p1)
 end)
 
 Citizen.CreateThread(function()
-    while true do
-    	Citizen.Wait(1)
+	while true do
+		local idle = 1000
 		if drag and other then
+			idle = 5
 			local ped = GetPlayerPed(GetPlayerFromServerId(other))
 			Citizen.InvokeNative(0x6B9BBD38AB0796DF,PlayerPedId(),ped,4103,11816,0.48,0.0,0.0,0.0,0.0,0.0,false,false,false,false,2,true)
 			carregado = true
@@ -55,13 +56,14 @@ Citizen.CreateThread(function()
 				DetachEntity(PlayerPedId(),true,false)
 				carregado = false
 			end
-        end
+		end
+		Citizen.Wait(idle)
 	end
 end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 250
 		if not IsPedInAnyVehicle(PlayerPedId()) then
 			if IsControlJustPressed(0,47) then
 				TriggerServerEvent("vrp_policia:algemar")
@@ -70,6 +72,7 @@ Citizen.CreateThread(function()
 				TriggerServerEvent("vrp_policia:carregar")
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 --------------------------------------------------------------------------------------------------------------------------------------------------
@@ -104,7 +107,7 @@ local blacklistedWeapons = {
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		local ped = PlayerPedId()
 		local blacklistweapon = false
 		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
@@ -116,10 +119,12 @@ Citizen.CreateThread(function()
 		end
 
 		if IsPedShooting(ped) and not blacklistweapon then
+			idle = 5
 			TriggerServerEvent('atirando',x,y,z)
 		end
 
 		blacklistweapon = false
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -228,7 +233,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 100
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
 		local vcoord = GetEntityCoords(veh)
 		local coord = GetOffsetFromEntityInWorldCoords(PlayerPedId(),0.0,1.0,-0.94)
@@ -250,6 +255,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -290,8 +296,9 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if prisioneiro then
+			idle = 5
 			local distance1 = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),1691.59,2566.05,45.56,true)
 			local distance2 = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),1669.51,2487.71,45.82,true)
 
@@ -325,13 +332,15 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if reducaopenal then
+			idle = 5
 			BlockWeaponWheelThisFrame()
 			DisableControlAction(0,21,true)
 			DisableControlAction(0,22,true)
@@ -375,6 +384,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,311,true)
 			DisableControlAction(0,344,true)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 

@@ -11,14 +11,16 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		local ped = PlayerPedId()
 		if IsPedInAnyVehicle(ped) then
 			local vehicle = GetVehiclePedIsIn(ped)
 			if GetPedInVehicleSeat(vehicle,0) == ped and GetVehicleClass(vehicle) == 8 then
+				idle = 5
 				DisableControlAction(0,73,true) 
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -26,13 +28,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(5)
+       	local idle = 1000
         local ped = PlayerPedId()
-        if IsPedArmed(ped,6) then
+		if IsPedArmed(ped,6) then
+			idle = 5
             DisableControlAction(0,140,true)
             DisableControlAction(0,141,true)
             DisableControlAction(0,142,true)
-        end
+		end
+		Citizen.Wait(idle)
     end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -60,16 +64,18 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(1)
+        local idle = 1000
         local veh = GetVehiclePedIsIn(PlayerPedId(),false)
         if DoesEntityExist(veh) and not IsEntityDead(veh) then
             local model = GetEntityModel(veh)
             if not IsThisModelABoat(model) and not IsThisModelAHeli(model) and not IsThisModelAPlane(model) and not IsThisModelABicycle(model) and not IsThisModelABike(model) and not IsThisModelAQuadbike(model) and IsEntityInAir(veh) then
-                DisableControlAction(0,59)
+				idle = 5
+				DisableControlAction(0,59)
                 DisableControlAction(0,60)
                 --DisableControlAction(0,73)
             end
-        end
+		end
+		Citizen.Wait(idle)
     end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -110,7 +116,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(100)
+		local idle = 1000
 		local ped = PlayerPedId()
 		local vehicle = GetVehiclePedIsIn(PlayerPedId())
 		if IsPedInAnyVehicle(ped) then
@@ -129,6 +135,7 @@ Citizen.CreateThread(function()
 					and GetEntityModel(vehicle) ~= GetHashKey("phantom") 
 					and GetEntityModel(vehicle) ~= GetHashKey("packer") 
 					and GetEntityModel(vehicle) ~= GetHashKey("paramedicoambu")) then
+						idle = 100
 					if speed <= 100.0 then
 					if IsControlPressed(1,21) then
 						SetVehicleReduceGrip(vehicle,true)
@@ -138,6 +145,7 @@ Citizen.CreateThread(function()
 				end    
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -163,13 +171,15 @@ end)
 local tasertime = false
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(100)
+		local idle = 1000
 		local ped = PlayerPedId()
 		if IsPedBeingStunned(ped) then
+			idle = 100
 			SetPedToRagdoll(ped,10000,10000,0,0,0,0)
 		end
 
 		if IsPedBeingStunned(ped) and not tasertime then
+			idle = 100
 			tasertime = true
 			SetTimecycleModifier("REDMIST_blend")
 			ShakeGameplayCam("FAMILY5_DRUG_TRIP_SHAKE",1.0)
@@ -184,6 +194,7 @@ Citizen.CreateThread(function()
 				end)
 			end)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -193,9 +204,10 @@ local isBlackout = false
 local oldSpeed = 0
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		local vehicle = GetVehiclePedIsIn(PlayerPedId())
 		if IsEntityAVehicle(vehicle) and GetPedInVehicleSeat(vehicle,-1) == PlayerPedId() then
+			idle = 5
 			local currentSpeed = GetEntitySpeed(vehicle)*2.236936
 			if currentSpeed ~= oldSpeed then
 				if not isBlackout and (currentSpeed < oldSpeed) and ((oldSpeed - currentSpeed) >= 50) then
@@ -216,6 +228,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,72,true)
 			DisableControlAction(0,75,true)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -241,15 +254,17 @@ end
 local hurt = false
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		local ped = PlayerPedId()
 		if not IsEntityInWater(ped) then
 			if GetEntityHealth(ped) <= 199 then
+				idle = 5
 				setHurt()
 			elseif hurt and GetEntityHealth(ped) > 200 then
 				setNotHurt()
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -294,43 +309,3 @@ Citizen.CreateThread(function()
         Citizen.Wait(5)
     end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- FALL WHILE RUNING AND JUMPING
------------------------------------------------------------------------------------------------------------------------------------------
---[[local ragdoll_chance = 0.99
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(100)
-		local ped = PlayerPedId()
-		if IsPedOnFoot(ped) and not IsPedSwimming(ped) and (IsPedRunning(ped) or IsPedSprinting(ped)) and not IsPedClimbing(ped) and IsPedJumping(ped) and not IsPedRagdoll(ped) then
-			local chance_result = math.random()
-			if chance_result < ragdoll_chance then
-				Citizen.Wait(600)
-                ShakeGameplayCam('SMALL_EXPLOSION_SHAKE',0.5)
-				SetPedToRagdoll(ped,5000,1,2)
-			else
-				Citizen.Wait(2000)
-			end
-		end
-	end
-end)]]
------------------------------------------------------------------------------------------------------------------------------------------
--- WALK SHAKE
------------------------------------------------------------------------------------------------------------------------------------------
---[[playerMoving = false
-Citizen.CreateThread(function()
-	while true do 
-		Wait(1)
-		if not IsPedInAnyVehicle(PlayerPedId(), false) and GetEntitySpeed(PlayerPedId()) >= 0.5 and GetFollowPedCamViewMode() ~= 4 then
-			if playerMoving == false then
-				ShakeGameplayCam("ROAD_VIBRATION_SHAKE", 1.0)
-				playerMoving = true
-			end
-		else
-			if playerMoving == true then
-				StopGameplayCamShaking(false)
-				playerMoving = false
-			end
-		end
-	end
-end)]]

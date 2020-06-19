@@ -21,5 +21,5 @@ files {
 	'nui/*.html',
 	'nui/*.js',
     'nui/*.css',
-	'nui/**/*
+	'nui/**/*'
 }

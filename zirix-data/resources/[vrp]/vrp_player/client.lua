@@ -345,13 +345,15 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if DoesEntityExist(GetVehiclePedIsTryingToEnter(PlayerPedId())) then
 			local veh = GetVehiclePedIsTryingToEnter(PlayerPedId())
+			idle = 5
 			if GetVehicleDoorLockStatus(veh) >= 2 or GetPedInVehicleSeat(veh,-1) then
 				TriggerServerEvent("TryDoorsEveryone",veh,2,GetVehicleNumberPlateText(veh))
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -426,10 +428,12 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if energetico then
+			idle = 5
 			RestorePlayerStamina(PlayerId(),1.0)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -443,8 +447,9 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if cancelando then
+			idle = 5
 			BlockWeaponWheelThisFrame()
 			DisableControlAction(0,29,true)
 			DisableControlAction(0,38,true)
@@ -470,6 +475,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,311,true)
 			DisableControlAction(0,344,true)			
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

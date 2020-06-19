@@ -1372,14 +1372,15 @@ end
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if cooldown < 1 then
 			local ped = PlayerPedId()
 			if not IsPedInAnyVehicle(ped) then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				for k,v in pairs(spawn) do
-					if Vdist(x,y,z,v.x,v.y,v.z) <= 10.5 then
+					if Vdist(x,y,z,v.x,v.y,v.z) <= 5.5 then
 						DrawMarker(23,v.x,v.y,v.z-0.97,0,0,0,0,0,0,1.0,1.0,0.5,247,217,99,100,0,0,0,0)
+						idle = 5
 						if Vdist(x,y,z,v.x,v.y,v.z) <= 1 then
 							if IsControlJustPressed(0,38) then
 								vSERVER.returnHouses(v.name,k)
@@ -1393,6 +1394,7 @@ Citizen.CreateThread(function()
 				vSERVER.vehicleLock()
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

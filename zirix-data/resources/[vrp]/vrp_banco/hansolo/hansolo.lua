@@ -171,39 +171,42 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 if BancoMenu then
 	Citizen.CreateThread(function()
-	while true do
-		Wait(0)
+		while true do
+			local idle = 1000
 
-		if nearBanco() then
-			if IsControlJustPressed(1, 38) then
-				CalculateTimeToDisplay()
-				if parseInt(hora) >= 07 and parseInt(hora) <= 17 then
+			if nearBanco() then
+				idle = 5
+				if IsControlJustPressed(1, 38) then
+					CalculateTimeToDisplay()
+					if parseInt(hora) >= 07 and parseInt(hora) <= 17 then
+						inMenu = true
+						SetNuiFocus(true, true)
+						SendNUIMessage({type = 'openGeneral'})
+						TriggerServerEvent('banco:balance')
+						local ped = GetPlayerPed(-1)
+					else
+						TriggerEvent("Notify","importante","Funcionamento dos bancos é das <b>07:00</b> as <b>18:00</b>.") 
+					end
+				end
+			end
+
+			if nearATM() then
+				idle = 5
+				if IsControlJustPressed(1, 38) then
 					inMenu = true
 					SetNuiFocus(true, true)
 					SendNUIMessage({type = 'openGeneral'})
 					TriggerServerEvent('banco:balance')
 					local ped = GetPlayerPed(-1)
-				else
-					TriggerEvent("Notify","importante","Funcionamento dos bancos é das <b>07:00</b> as <b>18:00</b>.") 
 				end
 			end
-		end
-
-		if nearATM() then
-			if IsControlJustPressed(1, 38) then
-				inMenu = true
-				SetNuiFocus(true, true)
-				SendNUIMessage({type = 'openGeneral'})
-				TriggerServerEvent('banco:balance')
-				local ped = GetPlayerPed(-1)
-			end
-		end
-				
-		if IsControlJustPressed(1, 322) then
-			inMenu = false
+					
+			if IsControlJustPressed(1, 322) then
+				inMenu = false
 				SetNuiFocus(false, false)
 				SendNUIMessage({type = 'close'})
 			end
+			Wait(idle)
 		end
 	end)
 end
@@ -319,12 +322,13 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		local ped = PlayerPedId()
 		local x,y,z = GetEntityCoords(ped)
 		if GetSelectedPedWeapon(ped) == GetHashKey("WEAPON_UNARMED") and not IsPedInAnyVehicle(ped) then
 			for k,v in pairs(locais) do
 				if Vdist(v.x,v.y,v.z,x,y,z) <= 1 and not andamento then
+					idle = 5
 					if IsControlJustPressed(0,47) and banK.checkPermission() then
 						banK.checkRobbery(v.id,v.x,v.y,v.z,v.h)
 					end
@@ -341,6 +345,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

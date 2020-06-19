@@ -25,8 +25,9 @@ local pedlist = {
 Citizen.CreateThread(function()
 	for k,v in pairs(pedlist) do
 		RequestModel(GetHashKey(v.hash2))
+
 		while not HasModelLoaded(GetHashKey(v.hash2)) do
-			Citizen.Wait(10)
+			Citizen.Wait(100)
 		end
 
 		local ped = CreatePed(4,v.hash,v.x,v.y,v.z-1,v.h,false,true)

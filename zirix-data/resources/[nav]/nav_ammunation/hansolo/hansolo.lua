@@ -87,7 +87,6 @@ Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
 		local idle = 1000
-
 		for k,v in pairs(lojas) do
 			local ped = PlayerPedId()
 			local x,y,z = table.unpack(GetEntityCoords(ped))
@@ -109,7 +108,6 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
-
 		Citizen.Wait(idle)
 	end
 end)

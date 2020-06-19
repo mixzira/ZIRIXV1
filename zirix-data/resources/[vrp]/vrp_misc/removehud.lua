@@ -104,6 +104,6 @@ Citizen.CreateThread(function()
 		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 		RemoveVehiclesFromGeneratorsInArea(x-9999.0,y-9999.0,z-9999.0,x+9999.0,y+9999.0,z+9999.0)
 
-		Citizen.Wait(1)
+		Citizen.Wait(1000)
 	end
 end)

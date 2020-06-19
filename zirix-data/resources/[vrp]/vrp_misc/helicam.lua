@@ -8,8 +8,9 @@ local fov = (fov_max+fov_min)*0.5
 
 Citizen.CreateThread(function()
 	while true do
-        Citizen.Wait(10)
+        local idle = 1000
 		if IsPlayerInPolmav() then
+			idle = 5
 			local heli = GetVehiclePedIsIn(PlayerPedId())
 			SetVehicleRadioEnabled(heli,false)
 			if IsHeliHighEnough(heli) then
@@ -69,6 +70,7 @@ Citizen.CreateThread(function()
 			SetNightvision(false)
 			SetSeethrough(false)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -145,9 +147,10 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		
 		if coords then
+			idle = 5
 			x, y, z = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 			
 			roundx = tonumber(string.format("%.2f", x))
@@ -187,6 +190,7 @@ Citizen.CreateThread(function()
 				DrawTxt("~r~Vehicle Fuel: ~s~"..tonumber(string.format("%.2f", GetVehicleFuelLevel(GetVehiclePedIsUsing(PlayerPedId())))), 0.015, 0.70)
 			end
 		end
+		Citizen.Wait(idle)
     end
 end)
 

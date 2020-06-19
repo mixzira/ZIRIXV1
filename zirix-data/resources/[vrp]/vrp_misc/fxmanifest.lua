@@ -8,6 +8,5 @@ client_scripts {
 	'helicam.lua',
 	'dispatch.lua',
 	'pedsprofissoes.lua',
-	'removehud.lua',
-	'vehicleblacklist'
+	'removehud.lua'
 }

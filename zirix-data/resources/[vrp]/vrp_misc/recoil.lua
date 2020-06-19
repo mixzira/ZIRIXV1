@@ -58,7 +58,7 @@ local recoils = {
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(50)
+		Citizen.Wait(500)
 		if IsPedShooting(PlayerPedId()) and not IsPedDoingDriveby(PlayerPedId()) then
 			local _,wep = GetCurrentPedWeapon(PlayerPedId())
 			_,cAmmo = GetAmmoInClip(PlayerPedId(),wep)

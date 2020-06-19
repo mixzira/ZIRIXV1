@@ -68,7 +68,8 @@ end
 local NewRot = 1.0
 local NewZ = 0.71
 Citizen.CreateThread(function()
-    while true do
+	while true do
+		local idle = 1000
     	local currentProp = GetClosestObjectOfType(-1153.921,-1703.777,11.1348,0.9,GetHashKey(prop),false,false,false)
 		if currentProp ~= nil then
             SetEntityRotation(currentProp, 0.0, 0.0, NewRot,false, true)
@@ -76,7 +77,8 @@ Citizen.CreateThread(function()
         end    
 		
 		local dist = GetDistanceBetweenCoords(-1153.921,-1703.777,11.1348, GetEntityCoords(PlayerPedId()), true)
-		if dist <= 15.0 then
+		if dist <= 10.0 then
+			idle = 5
 			if IsControlPressed(0, 96) and src.checkPermission() then
 				NewZ = NewZ+0.01
 			end
@@ -85,6 +87,6 @@ Citizen.CreateThread(function()
 			end
 		end
 		AttachEntityToEntity(currentCar,currentProp,0.0,0,0.0,NewZ,0,0,0,1,1,0,1,0,1)
-		Citizen.Wait(10)
+		Citizen.Wait(idle)
 	end
 end)

@@ -32,12 +32,14 @@ function ScaleformLabel(label)
 end
 
 Citizen.CreateThread(function()
-	while true do
+    while true do
+        local idle = 1000
 		for k, v in ipairs(Config.BankRobbery) do
 			local x,y,z = table.unpack(v.Coods)
 			local Coordenadas = GetEntityCoords(PlayerPedId())
 			local Distancia = GetDistanceBetweenCoords(Coordenadas.x, Coordenadas.y, Coordenadas.z, x,y,z, true)
-			if Distancia < 6.0 then
+            if Distancia < 6.0 then
+                idle = 5
 				Opacidade = math.floor(255 - (Distancia * 40))
 				TextoMarker(x,y,z+1.0, "APERTE ~r~[ F ]~w~ PARA INICIAR O ROUBO", Opacidade, 0.54, 0.54)
 					DrawMarker(Config.marker.idmarker, x,y,z, 0, 0, 0, 0, 0, 0, Config.marker.x1,Config.marker.y1,Config.marker.z1,Config.marker.r,Config.marker.g,Config.marker.b,Config.marker.a, Config.marker.pula, 0, 0, Config.marker.gira)
@@ -62,7 +64,7 @@ Citizen.CreateThread(function()
 				--end
 			end
         end
-        Citizen.Wait(1)
+        Citizen.Wait(idle)
     end
 end)
 
