@@ -1,3 +1,7 @@
+----------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+----------------------------------------------------------------------------------------------------------
 local menuactive = false
 function ToggleActionMenu()
 	menuactive = not menuactive
@@ -15,46 +19,27 @@ end
 --[ BUTTON ]-----------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("ButtonClick",function(data,cb)
-	if data == "c-machado" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_BATTLEAXE")
-	elseif data == "c-canivete" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_SWITCHBLADE")
-	elseif data == "c-paraquedas" then
-		TriggerServerEvent("departamento-comprar","wbody|GADGET_PARACHUTE")
-	elseif data == "c-faca" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_KNIFE")
-	elseif data == "c-lanterna" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_FLASHLIGHT")
-	elseif data == "c-adaga" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_DAGGER")
-	elseif data == "c-socoingles" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_KNUCKLE")
-	elseif data == "c-machete" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_MACHETE")
-	elseif data == "c-grifo" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_WRENCH")
-	elseif data == "c-golf" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_GOLFCLUB")
-	elseif data == "c-crbar" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_CROWBAR")
-	elseif data == "c-sinuca" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_GOLFCLUB")
-	elseif data == "c-dmachado" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_HATCHET")
-	elseif data == "c-taco" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_BAT")
-	elseif data == "c-garrafa" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_BOTTLE")
-	elseif data == "c-pedra" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_STONE_HATCHET")
-	elseif data == "c-flare" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_FLARE")
-	elseif data == "c-glock" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_COMBATPISTOL")
-	elseif data == "c-mglock" then
-		TriggerServerEvent("departamento-comprar","wammo|WEAPON_COMBATPISTOL")
-	elseif data == "c-martelo" then
-		TriggerServerEvent("departamento-comprar","wbody|WEAPON_HAMMER")
+	if data == "comprar-algema" then
+		TriggerServerEvent("contrabandista-comprar","algema")
+
+	elseif data == "comprar-c4" then
+		TriggerServerEvent("contrabandista-comprar","c4")
+
+	elseif data == "comprar-capuz" then
+		TriggerServerEvent("contrabandista-comprar","capuz")
+
+	elseif data == "comprar-furadeira" then
+		TriggerServerEvent("contrabandista-comprar","furadeira")
+
+	elseif data == "comprar-lockpick" then
+		TriggerServerEvent("contrabandista-comprar","lockpick")
+
+	elseif data == "comprar-placa" then
+		TriggerServerEvent("contrabandista-comprar","placa")
+
+	elseif data == "comprar-serra" then
+		TriggerServerEvent("contrabandista-comprar","serra")
+	
 	elseif data == "fechar" then
 		ToggleActionMenu()
 	
@@ -64,17 +49,7 @@ end)
 --[ LOCAIS ]-----------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
 local lojas = {
-	{ ['x'] = 22.65, ['y'] = -1106.97, ['z'] = 29.8 },
-	{ ['x'] = 809.56, ['y'] = -2157.66, ['z'] = 29.62 },
-	{ ['x'] = 1693.71, ['y'] = 3760.54, ['z'] = 34.71 },
-	{ ['x'] = 252.31, ['y'] = -50.68, ['z'] = 69.95 },
-	{ ['x'] = 841.75, ['y'] = -1033.94, ['z'] = 28.2},
-	{ ['x'] = -330.19, ['y'] = 6084.47, ['z'] = 31.46 },
-	{ ['x'] = -661.63, ['y'] = -934.93, ['z'] = 21.83 },
-	{ ['x'] = -1305.6, ['y'] = -394.94, ['z'] = 36.7 },
-	{ ['x'] = -1117.58, ['y'] = 2699.19, ['z'] = 18.56 },
-	{ ['x'] = 2567.29, ['y'] = 293.96, ['z'] = 108.74 },
-	{ ['x'] = -3172.03, ['y'] = 1088.45, ['z'] = 20.84 },
+	{ ['x'] = 1224.35, ['y'] = -2911.43, ['z'] = 5.93 }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 --[ MENU ]-------------------------------------------------------------------------------------------------------------------------------
@@ -82,7 +57,7 @@ local lojas = {
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 
 		for k,v in pairs(lojas) do
 			local ped = PlayerPedId()
@@ -91,12 +66,13 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			local lojas = lojas[k]
 
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) <= 2 then
-				DrawText3D(lojas.x, lojas.y, lojas.z, "[~b~E~w~] Para acessar ~b~AMMUNATION~w~.")
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) < 1.2 then
+				DrawText3D(lojas.x, lojas.y, lojas.z, "[~r~E~w~] Para ~r~COMPRAR~w~.")
 			end
 			
-			if distance <= 15 then
-				DrawMarker(23, lojas.x, lojas.y, lojas.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 101, 212, 255, 150, 0, 0, 0, 0)
+			if distance <= 5 then
+				DrawMarker(23, lojas.x, lojas.y, lojas.z-0.97,0,0,0,0,0,0,0.7,0.7,0.5,214,29,0,100,0,0,0,0)
+				idle = 5
 				if distance <= 1.2 then
 					if IsControlJustPressed(0,38) then
 						ToggleActionMenu()
@@ -104,6 +80,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

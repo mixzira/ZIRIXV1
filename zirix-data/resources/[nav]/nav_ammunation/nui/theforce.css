@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+--------------------------------------------------------------------------------------------------------*/
 body {
     position: absolute;
     width: 100%;
@@ -102,7 +106,7 @@ h1{
 
 .categorias {
     position: absolute;
-    width: 250px;
+    width: 350px;
     height: 40px;
     right: 10px;
 }

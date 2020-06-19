@@ -19,15 +19,46 @@ end
 --[ BUTTON ]-----------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNUICallback("ButtonClick",function(data,cb)
-	if data == "comprar-mochila" then
-		TriggerServerEvent("acessorios-comprar","mochila")
-	
-	elseif data == "comprar-mascara" then
-		TriggerServerEvent("acessorios-comprar","mascara")
-
-	elseif data == "comprar-oculos" then
-		TriggerServerEvent("acessorios-comprar","oculos")
-
+	if data == "c-machado" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_BATTLEAXE")
+	elseif data == "c-canivete" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_SWITCHBLADE")
+	elseif data == "c-paraquedas" then
+		TriggerServerEvent("departamento-comprar","wbody|GADGET_PARACHUTE")
+	elseif data == "c-faca" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_KNIFE")
+	elseif data == "c-lanterna" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_FLASHLIGHT")
+	elseif data == "c-adaga" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_DAGGER")
+	elseif data == "c-socoingles" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_KNUCKLE")
+	elseif data == "c-machete" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_MACHETE")
+	elseif data == "c-grifo" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_WRENCH")
+	elseif data == "c-golf" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_GOLFCLUB")
+	elseif data == "c-crbar" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_CROWBAR")
+	elseif data == "c-sinuca" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_GOLFCLUB")
+	elseif data == "c-dmachado" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_HATCHET")
+	elseif data == "c-taco" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_BAT")
+	elseif data == "c-garrafa" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_BOTTLE")
+	elseif data == "c-pedra" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_STONE_HATCHET")
+	elseif data == "c-flare" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_FLARE")
+	elseif data == "c-glock" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_COMBATPISTOL")
+	elseif data == "c-mglock" then
+		TriggerServerEvent("departamento-comprar","wammo|WEAPON_COMBATPISTOL")
+	elseif data == "c-martelo" then
+		TriggerServerEvent("departamento-comprar","wbody|WEAPON_HAMMER")
 	elseif data == "fechar" then
 		ToggleActionMenu()
 	
@@ -37,13 +68,17 @@ end)
 --[ LOCAIS ]-----------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
 local lojas = {
-	{ ['x'] = 77.08, ['y'] = -1389.33, ['z'] = 29.38 },
-	{ ['x'] = -818.52, ['y'] = -1073.11, ['z'] = 11.33 },
-	{ ['x'] = 423.66, ['y'] = -809.71, ['z'] = 29.5 },
-	{ ['x'] = 1200.31, ['y'] = 2708.62, ['z'] = 38.23 },
-	{ ['x'] = -1097.77, ['y'] = 2711.73, ['z'] = 19.11 },
-	{ ['x'] = 1692.88, ['y'] = 4819.09, ['z'] = 42.07 },
-	{ ['x'] = 1.2, ['y'] = 6511.15, ['z'] = 31.88 },
+	{ ['x'] = 22.65, ['y'] = -1106.97, ['z'] = 29.8 },
+	{ ['x'] = 809.56, ['y'] = -2157.66, ['z'] = 29.62 },
+	{ ['x'] = 1693.71, ['y'] = 3760.54, ['z'] = 34.71 },
+	{ ['x'] = 252.31, ['y'] = -50.68, ['z'] = 69.95 },
+	{ ['x'] = 841.75, ['y'] = -1033.94, ['z'] = 28.2},
+	{ ['x'] = -330.19, ['y'] = 6084.47, ['z'] = 31.46 },
+	{ ['x'] = -661.63, ['y'] = -934.93, ['z'] = 21.83 },
+	{ ['x'] = -1305.6, ['y'] = -394.94, ['z'] = 36.7 },
+	{ ['x'] = -1117.58, ['y'] = 2699.19, ['z'] = 18.56 },
+	{ ['x'] = 2567.29, ['y'] = 293.96, ['z'] = 108.74 },
+	{ ['x'] = -3172.03, ['y'] = 1088.45, ['z'] = 20.84 },
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
 --[ MENU ]-------------------------------------------------------------------------------------------------------------------------------
@@ -61,7 +96,7 @@ Citizen.CreateThread(function()
 			local lojas = lojas[k]
 
 			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) < 1.2 then
-				DrawText3D(lojas.x, lojas.y, lojas.z, "[~b~E~w~] Para acessar a ~b~LOJA DE ACESSÓRIOS~w~.")
+				DrawText3D(lojas.x, lojas.y, lojas.z, "[~b~E~w~] Para acessar ~b~AMMUNATION~w~.")
 			end
 			
 			if distance <= 5 then
