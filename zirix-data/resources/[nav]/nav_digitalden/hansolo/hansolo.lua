@@ -1,3 +1,7 @@
+----------------------------------------------------------------------------------------------------------
+--[   Esse script foi desenvolvido pela equipe da Ziraflix Dev Group, por favor mantenha os créditos   ]--
+--[                     Contato: contato@ziraflix.com   Discord: discord.gg/6p3M3Cz                    ]--
+----------------------------------------------------------------------------------------------------------
 local menuactive = false
 function ToggleActionMenu()
 	menuactive = not menuactive
@@ -18,6 +22,9 @@ RegisterNUICallback("ButtonClick",function(data,cb)
 	if data == "comprar-radio" then
 		TriggerServerEvent("departamento-comprar","radio")
 
+	elseif data == "comprar-celular" then
+		TriggerServerEvent("departamento-comprar","celular")
+
 	elseif data == "fechar" then
 		ToggleActionMenu()
 	
@@ -35,7 +42,7 @@ local lojas = {
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 
 		for k,v in pairs(lojas) do
 			local ped = PlayerPedId()
@@ -44,12 +51,13 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			local lojas = lojas[k]
 
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) <= 2 then
-				DrawText3D(lojas.x, lojas.y, lojas.z, "[~b~E~w~] Para acessar a ~b~LOJA DIGITALDEN~w~.")
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) < 1.2 then
+				DrawText3D(lojas.x, lojas.y, lojas.z, "Pressione [~b~E~w~] para acessar a ~b~LOJA DIGITALDEN~w~.")
 			end
 			
-			if distance <= 15 then
+			if distance <= 5 then
 				DrawMarker(23, lojas.x, lojas.y, lojas.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 101, 212, 255, 150, 0, 0, 0, 0)
+				idle = 5
 				if distance <= 1.2 then
 					if IsControlJustPressed(0,38) then
 						ToggleActionMenu()
@@ -57,6 +65,8 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
