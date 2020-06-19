@@ -33,14 +33,15 @@ local leitelocs = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if not servico then
 			local ped = PlayerPedId()
 			local x,y,z = table.unpack(GetEntityCoords(ped))
 			local bowz,cdz = GetGroundZFor_3dCoord(CoordenadaX,CoordenadaY,CoordenadaZ)
 			local distance = GetDistanceBetweenCoords(CoordenadaX,CoordenadaY,cdz,x,y,z,true)
-			if distance <= 30 then
+			if distance <= 10.2 then
 				DrawMarker(23,CoordenadaX,CoordenadaY,CoordenadaZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,247,217,99,100,0,0,0,0)
+				idle = 5
 				if distance <= 2 then
 					drawTxt("PRESSIONE  ~y~E~w~  PARA INICIAR AS ENTREGAS",4,0.5,0.92,0.35,255,255,255,180)
 					if IsControlJustPressed(0,38) then
@@ -54,6 +55,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -61,7 +63,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if servico then
 			local ped = PlayerPedId()
 			local x,y,z = table.unpack(GetEntityCoords(ped))
@@ -69,6 +71,7 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(leitelocs[selecionado].x,leitelocs[selecionado].y,cdz,x,y,z,true)
 			if distance <= 10 then
 				DrawMarker(23,leitelocs[selecionado].x,leitelocs[selecionado].y,leitelocs[selecionado].z-0.97,0,0,0,0,0,0,1.0,1.0,0.5,247,217,99,100,0,0,0,0)
+				idle = 5
 				if distance <= 2 then
 					drawTxt("PRESSIONE  ~y~E~w~  PARA ENTREGAR AS GARRAFAS DE LEITE",4,0.5,0.92,0.35,255,255,255,180)
 					if IsControlJustPressed(0,38) then
@@ -90,6 +93,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -97,8 +101,9 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local = 1000
 		if servico then
+			idle = 5
 			if IsControlJustPressed(0,121) then
 				TriggerEvent("Notify","importante","Vá até o próximo local e entregue <b>"..quantidade.."x garrafas de leite</b>.")
 			elseif IsControlJustPressed(0,168) then
@@ -107,6 +112,7 @@ Citizen.CreateThread(function()
 				TriggerEvent("Notify","aviso","Você saiu de serviço.")
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

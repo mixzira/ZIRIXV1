@@ -100,7 +100,7 @@ local pedlist = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if not emservico then
 			local ped = PlayerPedId()
 			local x,y,z = table.unpack(GetEntityCoords(ped))
@@ -109,6 +109,7 @@ Citizen.CreateThread(function()
 
 			if distance <= 10 then
 				DrawMarker(23,CoordenadaX,CoordenadaY,CoordenadaZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,247,217,99,100,0,0,0,0)
+				idle = 5
 				if distance <= 1.2 then
 					drawTxt("PRESSIONE  ~y~E~w~  PARA INICIAR O EXPEDIENTE",4,0.5,0.92,0.35,255,255,255,180)
 					if IsControlJustPressed(0,38) then
@@ -121,6 +122,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -128,7 +130,7 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if emservico then
 			local ped = PlayerPedId()
 			local vehicle = GetVehiclePedIsUsing(ped)
@@ -139,6 +141,7 @@ Citizen.CreateThread(function()
 
 			if distance <= 50.0 and IsVehicleModel(vehicle,GetHashKey("taxi")) then
 				DrawMarker(21,locs[selecionado].x,locs[selecionado].y,locs[selecionado].z+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,247,217,99,100,1,0,0,1)
+				idle = 5
 				if distance <= 2.5 then
 					if IsControlJustPressed(0,38) and emP.checkPermission() and (GetEntityHeading(ped) >= locs[selecionado].h-20.0 and GetEntityHeading(ped) <= locs[selecionado].h+20.0) then
 						RemoveBlip(blips)
@@ -206,6 +209,7 @@ Citizen.CreateThread(function()
 			end
 
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -237,8 +241,9 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if emservico then
+			idle = 5
 			local vehicle = GetVehiclePedIsIn(PlayerPedId())
 			if IsControlJustPressed(0,168) then
 				RemoveBlip(blips)
@@ -258,6 +263,7 @@ Citizen.CreateThread(function()
 				TriggerEvent("Notify","aviso","Você saiu de serviço.")
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -304,35 +310,35 @@ Citizen.CreateThread(function()
 end)
 
 if TaxiGuiAtivo then
-  Citizen.CreateThread(function()
-    while true do
-      Citizen.Wait(5)
-      if(NoTaxi()) then
-        inTaxi = true
-        local ped = PlayerPedId()
-        local veh = GetVehiclePedIsIn(ped, false)
-        if(NoTaxi() and GetPedInVehicleSeat(veh, -1) == ped) then
-          if IsControlJustReleased(0,170) and emP.checkPermission() then -- F3
-            TriggerEvent('taxi:toggleDisplay')
-            Citizen.Wait(100)
-          end
-          if IsControlJustReleased(0,288) and emP.checkPermission() then -- F1
-            TriggerEvent('taxi:toggleHire')
-            Citizen.Wait(100)
-          end
-          if IsControlJustReleased(0,289) and emP.checkPermission() then -- F2
-            TriggerEvent('taxi:resetMeter')
-            Citizen.Wait(100)
-          end
-        end
-      else
-        if(meterOpen) then
-          closeGui()
-        end
-        meterOpen = false
-      end
-    end
-  end)
+  	Citizen.CreateThread(function()
+		while true do
+			Citizen.Wait(5)
+			if(NoTaxi()) then
+				inTaxi = true
+				local ped = PlayerPedId()
+				local veh = GetVehiclePedIsIn(ped, false)
+				if(NoTaxi() and GetPedInVehicleSeat(veh, -1) == ped) then
+					if IsControlJustReleased(0,170) and emP.checkPermission() then -- F3
+						TriggerEvent('taxi:toggleDisplay')
+						Citizen.Wait(100)
+					end
+					if IsControlJustReleased(0,288) and emP.checkPermission() then -- F1
+						TriggerEvent('taxi:toggleHire')
+						Citizen.Wait(100)
+					end
+					if IsControlJustReleased(0,289) and emP.checkPermission() then -- F2
+						TriggerEvent('taxi:resetMeter')
+						Citizen.Wait(100)
+					end
+				end
+			else
+				if(meterOpen) then
+					closeGui()
+				end
+				meterOpen = false
+			end
+		end
+ 	 end)
 end
 
 function round(num, numDecimalPlaces)

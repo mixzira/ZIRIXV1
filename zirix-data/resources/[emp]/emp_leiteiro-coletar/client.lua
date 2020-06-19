@@ -39,13 +39,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if not processo then
 			for _,func in pairs(vacas) do
 				local ped = PlayerPedId()
 				local x,y,z = table.unpack(func)
 				local distancia = GetDistanceBetweenCoords(GetEntityCoords(ped),x,y,z)
-				if distancia <= 30.0 then
+				if distancia <= 10.0 then
+					idle = 5
 					if distancia <= 1.2 then
 						drawTxt("PRESSIONE  ~b~E~w~  PARA ORDENHAR A VACA",4,0.5,0.92,0.35,255,255,255,180)
 						if IsControlJustPressed(0,38) and emP.checkItem() then
@@ -68,6 +69,7 @@ Citizen.CreateThread(function()
 		if processo then
 			drawTxt("AGUARDE ~b~"..segundos.."~w~ SEGUNDOS ATÉ FINALIZAR A EXTRAÇÃO DO LEITE",4,0.5,0.92,0.35,255,255,255,180)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

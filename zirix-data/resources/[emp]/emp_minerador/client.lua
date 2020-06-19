@@ -54,7 +54,7 @@ local locs = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if not servico then
 			local ped = PlayerPedId()
 			local distance = GetDistanceBetweenCoords(locs[selecionado].x,locs[selecionado].y,locs[selecionado].z,GetEntityCoords(ped),true)
@@ -62,6 +62,7 @@ Citizen.CreateThread(function()
 
 			if distance <= 100.0 then
 				DrawMarker(21,locs[selecionado].x, locs[selecionado].y, locs[selecionado].z, 0, 0, 0, 0, 180.56, 180.56, 0.8, 0.8, 0.5, 21, 142, 255, 155, 1, 0, 2, 1, 0, 0, 0)
+				idle = 5
 				if distance <= 1.2 and IsControlJustPressed(0,38) and not IsPedInAnyVehicle(ped) and emP.checkWeight() and GetEntityModel(vehicle) == GetHashKey("tiptruck") then
 					servico = true
 					TriggerEvent("cancelando",true)
@@ -87,5 +88,6 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)

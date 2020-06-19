@@ -51,7 +51,7 @@ local arvores = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if not processo then
 			for _,func in pairs(arvores) do
 				local ped = PlayerPedId()
@@ -60,6 +60,7 @@ Citizen.CreateThread(function()
 				local vehicle = GetPlayersLastVehicle()
 				if distancia <= 50 and list[i] == nil then
 					DrawMarker(21,x,y,z,0,0,0,0,180.0,130.0,0.5,0.5,0.5,247,217,99,100,1,0,0,1)
+					idle = 5
 					if distancia <= 1 and list[i] == nil then
 						if distancia <= 1.2 and GetSelectedPedWeapon(ped) == GetHashKey("WEAPON_HATCHET") or GetSelectedPedWeapon(ped) == GetHashKey("WEAPON_BATTLEAXE") or GetSelectedPedWeapon(ped) == GetHashKey("WEAPON_STONE_HATCHET") then
 							drawTxt("PRESSIONE  ~y~E~w~  PARA CORTAR MADEIRA",4,0.5,0.93,0.50,255,255,255,180)
@@ -82,6 +83,7 @@ Citizen.CreateThread(function()
 		if processo then
 			drawTxt("AGUARDE ~g~"..segundos.."~w~ SEGUNDOS ATÉ FINALIZAR A EXTRAÇÃO DA MADEIRA",4,0.5,0.93,0.50,255,255,255,180)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 

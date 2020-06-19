@@ -18,7 +18,7 @@ local CoordenadaZ = 6.39
 -----------------------------------------------------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if not processo then
 			local ped = PlayerPedId()
 			local x,y,z = table.unpack(GetEntityCoords(ped))
@@ -27,6 +27,7 @@ Citizen.CreateThread(function()
 
 			if distance <= 3 then
 				DrawMarker(23,-424.08,-2789.52,6.39-0.97,0,0,0,0,0,0,1.0,1.0,0.5,247,217,99,100,0,0,0,0)
+				idle = 5
 				if distance <= 1.2 then
 					drawTxt("PRESSIONE  ~y~E~w~  PARA EMPACOTAR ENCOMENDA",4,0.5,0.92,0.35,255,255,255,180)
 					if IsControlJustPressed(0,38) and emP.checkPayment() then
@@ -49,6 +50,7 @@ Citizen.CreateThread(function()
 		if processo then
 			drawTxt("AGUARDE ~g~"..segundos.."~w~ SEGUNDOS ATÉ FINALIZAR O EMPACOTAMENTO",4,0.5,0.92,0.35,255,255,255,180)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
