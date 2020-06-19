@@ -1,9 +1,9 @@
 fx_version 'adamant'
 game 'gta5'
 
-author 'MixZira'
-contact 'E-mail: mixzira@outlook.com.br - Discord: MixZira#0001'
-version '1.0.0'
+author 'Ziraflix Dev Group'
+contact 'E-mail: contato@ziraflix.com - Discord: discord.gg/6p3M3Cz'
+version '1.0.4'
 
 ui_page 'nui/darkside.html'
 
@@ -21,6 +21,5 @@ files {
 	'nui/*.html',
 	'nui/*.js',
     'nui/*.css',
-    
-	'nui/**/*.png'
+	'nui/**/*'
 }
