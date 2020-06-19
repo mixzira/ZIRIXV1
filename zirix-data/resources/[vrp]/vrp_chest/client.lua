@@ -100,7 +100,7 @@ end)
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 
 		for k,v in pairs(chest) do
 			local ped = PlayerPedId()
@@ -109,12 +109,13 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			local chest = chest[k]
 
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), chest.x, chest.y, chest.z, true ) <= 2 then
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), chest.x, chest.y, chest.z, true ) < 1.2 then
 				DrawText3D(chest.x, chest.y, chest.z, chest.titulo)
 			end
 			
-			if distance <= 30 then
+			if distance <= 5 then
 				DrawMarker(23,chest.x,chest.y,chest.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 232, 94, 72, 150, 0, 0, 0, 0)
+				idle = 5
 				if distance <= 1.2 and chestTimer <= 0 then
 					if IsControlJustPressed(0,38) and vSERVER.checkIntPermissions(v['nome']) then
 						chestTimer = 3
@@ -125,6 +126,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

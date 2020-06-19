@@ -42,10 +42,11 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 		for k,v in pairs(doors) do
-			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) <= 3 then
+			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 3 then
+				idle = 5
 				local door = GetClosestObjectOfType(v.x,v.y,v.z,1.0,v.hash,false,false,false)
 				if door ~= 0 then
 					SetEntityCanBeDamaged(door,false)
@@ -68,6 +69,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
