@@ -8,79 +8,51 @@ vRP = Proxy.getInterface("vRP")
 ----------------------------------------------------------------------------------------------------------------------------------
 --[ CONEXÃO ]---------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------
-oC = {}
-Tunnel.bindInterface("oc_gps",oC)
+oC = Tunnel.getInterface("oc_gps")
 ----------------------------------------------------------------------------------------------------------------------------------
 --[ EVENTOS ]---------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------
-AddEventHandler("vRP:playerSpawn",function(user_id,source,first_spawn)
-	local source = source
-    local user_id = vRP.getUserId(source)
-    
-	if user_id then
-        TriggerClientEvent("oc_gps:coords", source)
-	end
-end)
+RegisterNetEvent("oc_gps:coords")
+AddEventHandler("oc_gps:coords", function(source)
+	if oC.motoclub() then
+		setBlip(609.82,-3085.98,6.07,643,39,"Fabrica de Armas")
+		setBlip(1123.06,-1303.96,34.72,280,39,"Fornecedor")
+		setBlip(991.78,-1551.18,30.76,280,39,"Fornecedor")
+		setBlip(974.0,-117.91,74.35,661,39,"Base")
+		setBlip(1224.34,-2911.45,5.93,586,39,"Contrabandista")
 
-RegisterCommand('ocblips',function(source,args,rawCommand)
-    local source = source
-    local user_id = vRP.getUserId(source)
-    
-    TriggerClientEvent("oc_gps:coords", source)
+	elseif oC.medellin() then
+		setBlip(1405.76,1119.02,114.84,40,5,"Fazenda")
+		setBlip(1123.06,-1303.96,34.72,280,5,"Fornecedor")
+		setBlip(991.78,-1551.18,30.76,280,5,"Fornecedor")
+		setBlip(1224.34,-2911.45,5.93,586,5,"Contrabandista")
+
+	elseif oC.grove() then
+		setBlip(102.68,-1938.23,20.81,84,2,"Base")
+		setBlip(1224.34,-2911.45,5.93,586,2,"Contrabandista")
+
+	elseif oC.ballas() then
+		setBlip(-177.09,-1593.37,34.56,84,27,"Base")
+		setBlip(1224.34,-2911.45,5.93,586,27,"Contrabandista")
+
+	elseif  oC.bratva() then
+		setBlip(1224.34,-2911.45,5.93,586,49,"Contrabandista")
+
+	elseif oC.odebrecht() then
+		setBlip(1224.34,-2911.45,5.93,586,51,"Contrabandista")
+
+    end
 end)
 ----------------------------------------------------------------------------------------------------------------------------------
 --[ FUNÇÃO ]----------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------
-function oC.motoclub()
-    local source = source
-    local user_id = vRP.getUserId(source)
-
-    if vRP.hasPermission(user_id,"motoclub.permissao") then
-        return true
-    end
-end
-
-function oC.medellin()
-    local source = source
-    local user_id = vRP.getUserId(source)
-
-    if vRP.hasPermission(user_id,"medellin.permissao") then
-        return true
-    end
-end
-
-function oC.grove()
-    local source = source
-    local user_id = vRP.getUserId(source)
-
-    if vRP.hasPermission(user_id,"grove.permissao") then
-        return true
-    end
-end
-
-function oC.ballas()
-    local source = source
-    local user_id = vRP.getUserId(source)
-
-    if vRP.hasPermission(user_id,"ballas.permissao") then
-        return true
-    end
-end
-
-function oC.bratva()
-    local source = source
-    local user_id = vRP.getUserId(source)
-
-    if vRP.hasPermission(user_id,"bratva.permissao") then
-        return true
-    end
-end
-
-function oC.odebrecht()
-    local source = source
-    local user_id = vRP.getUserId(source)
-
-    if vRP.hasPermission(user_id,"odebrecht.permissao") then
-        return true
-    end
+function setBlip(x,y,z,id,color,text)
+	local blip = AddBlipForCoord(x,y,z)
+	SetBlipSprite(blip,id)
+	SetBlipAsShortRange(blip,true)
+	SetBlipColour(blip,color)
+	SetBlipScale(blip,0.5)
+	BeginTextCommandSetBlipName("STRING")
+	AddTextComponentString(text)
+	EndTextCommandSetBlipName(blip)
 end
