@@ -8,6 +8,6 @@ Nesta versão reorganizamos alguns scripts para melhor otimização do seu conju
 O suporte está disponível apenas para compradores da versão 1, para os demais, busquem suporte da comunidade em nosso Discord.
 
 # Contato
-Comercial: contato@ziraflix.com
-Suporte: suporte@ziraflix.com
-Discord: discord.gg/6p3M3Cz
+• Comercial: contato@ziraflix.com
+• Suporte: suporte@ziraflix.com
+• Discord: https://discord.gg/6p3M3Cz
