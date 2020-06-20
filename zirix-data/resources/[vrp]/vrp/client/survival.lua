@@ -92,7 +92,9 @@ Citizen.CreateThread(function()
 				if IsPedInAnyVehicle(ped) then
 					TaskLeaveVehicle(ped,GetVehiclePedIsIn(ped),4160)
 				end
-				exports["mumble-voip"]:SetRadioChannel(0)
+				-- Use: exports["mumble-voip"]:SetRadioChannel(0) -- caso você use mumble-voip;
+				-- Use: exports.tokovoip_script:removePlayerFromRadio() -- caso você use toko-voip;
+				-- Caso você não use nenhum dos dois, mantenha essas opções comentadas ou apague.
 			else
 				if deathtimer > 0 then
 					drawTxt("VOCE TEM ~r~"..deathtimer.." ~w~SEGUNDOS DE VIDA, AGUARDE POR SOCORRO MÉDICO",4,0.5,0.92,0.35,255,255,255,255)
