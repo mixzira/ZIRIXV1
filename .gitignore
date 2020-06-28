@@ -1,6 +1,2 @@
-
-*.sfl
-*.db
-*.rpf
-*.key
-*.crt
+build/**/*
+zirix-data/cache/**/*
