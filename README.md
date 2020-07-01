@@ -5,7 +5,7 @@ Zirix é uma base vRPex para FiveM, com um conjunto de scripts da comunidade e d
 Nesta versão reorganizamos alguns scripts para melhor otimização do seu conjunto. Atacamos alguns scritps que possuiam um alto nivel de processamento, cessando os alterando o uso de seus loops.
 
 # Suporte
-O suporte está disponível apenas para compradores da versão 1, para os demais, busquem suporte da comunidade em nosso Discord.
+Vocês podem buscar suporte na nossa comunidade em: https://discord.gg/6p3M3Cz
 
 # Contato
 • Comercial: contato@ziraflix.com
