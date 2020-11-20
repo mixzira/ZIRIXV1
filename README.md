@@ -1,5 +1,5 @@
 # Zirix v1
-Zirix é uma base vRPex para FiveM, com um conjunto de scripts da comunidade e do nosso grupo de desenvolimento.
+Zirix é uma base vRPex para FiveM, com um conjunto de scripts da comunidade e do nosso grupo de desenvolvimento.
 
 # 1.4 Recall
 Nesta versão reorganizamos alguns scripts para melhor otimização do seu conjunto. Atacamos alguns scritps que possuiam um alto nivel de processamento, cessando os alterando o uso de seus loops.
