@@ -10,4 +10,4 @@ Você pode buscar suporte em nosso [Discord](https://discord.gg/kYFy8JwVfd).
 ## Contato
 - **Comercial: contato@ziraflix.com**
 - **Discord: https://discord.gg/kYFy8JwVfd**
-- **Website: https://ziraflix.com**
+- **Website: https://ziraflix.com.br**
