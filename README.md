@@ -1,3 +1,5 @@
+image::https://cdn.discordapp.com/attachments/917183221375049728/992135892523290734/zirix-v1.png[ZIRIXV3,822,float="center"]
+
 # ZIRIX V1
 **ZIRIX é uma base vRPex para FiveM, com um conjunto de scripts da comunidade e do grupo de desenvolvimento da ZIRAFLIX**.
 
