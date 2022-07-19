@@ -1,5 +1,5 @@
 <a href="https://discord.gg/kYFy8JwVfd" target="blank">
-      <img align="center" src="https://media.discordapp.net/attachments/917183221375049728/992514626250088458/zirix-v1.png"/>
+      <img align="center" width="100%" src="https://user-images.githubusercontent.com/58696475/179862379-5aaeaffe-a02b-427c-b269-f0691a2d7d5f.gif"/>
 </a>
 
 # ZIRIX V1
